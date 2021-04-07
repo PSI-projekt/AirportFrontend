@@ -91,7 +91,8 @@
               "src/assets"
             ],
             "styles": [
-			        "node_modules/bootstrap/dist/css/bootsrap.min.css",
+              "node_modules/bootstrap/dist/css/bootsrap.min.css",
+              "node_modules/alertifyjs/build/css/alertify.min.css",
               "src/styles.css"
             ],
             "scripts": []
