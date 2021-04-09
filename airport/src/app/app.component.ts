@@ -7,12 +7,5 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'airport';
-
-  constructor(private toaster: ToastrService) {
-  }
-
-  showToast(): void {
-    this.toaster.success('Text!', 'Title');
-}
+  title = 'OpoleAirport';
 }
