@@ -1,4 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
 html {
-  font-family: Calibri;
+  font-family: Calibri, sans-serif;
+}
+
+.btn-base {
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.1rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+  box-shadow 0.15s ease-in-out, 0.75s;
+}
+
+.btn-base:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+}
+
+.btn-base:disabled {
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.container-custom, html {
+  background-color: #e7e6e8;
+}
+
+
+.btn-transparent:hover, .btn-navigation:hover {
+  color: #757575;
+}
+
+.btn-transparent:focus, .btn-navigation:focus {
+  box-shadow: none;
+}
+
+.btn-black {
+  background-color: black;
+  color: white;
+  border-radius: 0;
+}
+
+.btn-black:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.25);
 }
