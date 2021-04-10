@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import {FlightDto} from '../../api/dtos/flight.dto';
 import {FlightService} from '../../api/flight.service';
 import {PaginatedResult, Pagination} from '../../api/dtos/pagination';
-import {DatePipe} from '@angular/common';
+import {GlobalVariablesService} from '../../services/global-variables.service';
 
 @Component({
   selector: 'app-home',
@@ -21,11 +21,12 @@ export class HomeComponent implements OnInit {
   public isLastPage = false;
   public fetchFailed = false;
 
-  constructor(private toastr: ToastrService, private airportService: AirportService, private flightService: FlightService) { }
+  constructor(private toastr: ToastrService, private airportService: AirportService, private flightService: FlightService,
+              private globalVars: GlobalVariablesService) { }
 
   ngOnInit(): void {
     this.getNumberOfAirports();
-    this.getFlights();
+    this.getFlights(this.globalVars.lastPage);
   }
 
   private getNumberOfAirports(): void {
@@ -47,6 +48,8 @@ export class HomeComponent implements OnInit {
       this.pagination = response.pagination;
       this.isFirstPage = this.pagination?.currentPage === 1;
       this.isLastPage = this.pagination?.totalPages === this.pagination?.currentPage;
+
+      this.globalVars.setLastPage(this.pagination?.currentPage);
     }, error => {
       this.isFetching = false;
       this.fetchFailed = true;
