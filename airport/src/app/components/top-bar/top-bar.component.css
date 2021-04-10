@@ -1,0 +1,13 @@
+.img-logo {
+  max-width: 12rem;
+  cursor: pointer;
+}
+
+.img-logo:focus {
+  outline: 0;
+}
+
+.btn-navigation {
+  font-size: 1.6rem;
+  padding: 0;
+}
