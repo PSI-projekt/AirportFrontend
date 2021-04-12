@@ -1,0 +1,8 @@
+.list-group-item:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.list-group-item {
+  transition-duration: 0.2s;
+}
