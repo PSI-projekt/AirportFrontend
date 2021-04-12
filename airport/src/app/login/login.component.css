@@ -1,0 +1,11 @@
+.form-signin {
+  background-color: white;
+  width: 100%;
+  max-width: 370px;
+  padding: 40px;
+  margin: auto;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
