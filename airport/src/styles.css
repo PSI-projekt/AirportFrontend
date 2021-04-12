@@ -58,3 +58,14 @@ html {
   color: black;
   box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.25);
 }
+
+.btn-circle {
+  background-color: black;
+  color: white;
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border-color: transparent;
+}

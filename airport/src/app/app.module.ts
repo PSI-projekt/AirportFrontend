@@ -10,9 +10,13 @@ import {HttpClientModule} from '@angular/common/http';
 import { FlightRowComponent } from './components/home/flight-row/flight-row.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DatePipe} from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({
@@ -20,7 +24,9 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     TopBarComponent,
-    FlightRowComponent
+    FlightRowComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
