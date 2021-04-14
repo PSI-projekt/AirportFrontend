@@ -4,6 +4,7 @@ import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
 import { ApiPaths, environment } from '../../environments/environment';
+import { UserForLoginDto } from './dtos/user-for-login-dto';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -14,8 +15,8 @@ export class AuthService {
     this.url = environment.baseUrl + ApiPaths.Auth;
   }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post(this.url+'/login',
+  login(username: string, password: string): Observable<UserForLoginDto> {
+    return this.http.post<UserForLoginDto>(this.url+'/login',
       {
         username,
         password
@@ -37,7 +38,7 @@ export class AuthService {
         catchError(this.handleError)
       );
   }
-  private handleError(errorRes: HttpErrorResponse): Observable<never> {
+  private handleError(errorRes: HttpErrorResponse): Observable<any> {
     let errorMessage = 'An unknown error occurred';
 
     switch (errorRes.status) {
