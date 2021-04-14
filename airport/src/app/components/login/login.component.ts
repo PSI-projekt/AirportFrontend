@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
-import { AuthService } from '../api/auth.service';
+import { AuthService } from '../../api/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
