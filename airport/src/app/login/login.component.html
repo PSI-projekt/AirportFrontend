@@ -1,11 +1,11 @@
 <div class="container-custom">
   <button type="button" class="btn-circle" routerLink="/"><span class="material-icons">arrow_back_ios</span></button>
-  <div class="form-signin rounded position-absolute top-50 start-50 translate-middle">
+  <div class="form-signin rounded-0 position-absolute top-50 start-50 translate-middle">
     <form class="text-center" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
       <h1 class="h1 mt-2 mb-5 fw-bold">Sign in</h1>
       <div class="form-floating mb-5">
         <input type="text"
-               class="form-control"
+               class="form-control rounded-0"
                id="username"
                placeholder="Username"
                ngModel
@@ -16,7 +16,7 @@
       </div>
       <div class="form-floating mb-5">
         <input type="password"
-               class="form-control"
+               class="form-control rounded-0"
                id="password"
                placeholder="Password"
                ngModel name="password"
