@@ -27,9 +27,9 @@ export class RegisterComponent {
         console.log(resData);
         this.toastr.success('Your account has been created!', 'Success!');
       },
-      errorMessasge => {
-        console.log(errorMessasge);
-        this.toastr.error(errorMessasge, 'Error');
+      errorMessage => {
+        console.log(errorMessage);
+        this.toastr.error(errorMessage, 'Error');
       }
     );
   }

@@ -25,9 +25,9 @@ export class LoginComponent {
         console.log(resData);
         this.toastr.success('Your are now logged in!', 'Success!');
       },
-      errorMessasge => {
-        console.log(errorMessasge);
-        this.toastr.error(errorMessasge, 'Error');
+      errorMessage => {
+        console.log(errorMessage);
+        this.toastr.error(errorMessage, 'Error');
       }
     );
   }
