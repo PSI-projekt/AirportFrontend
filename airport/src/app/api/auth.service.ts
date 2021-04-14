@@ -1,43 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
-interface AuthResponse {
-
-}
+import { ApiPaths, environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  private readonly url: string;
 
-  login(username: string, password: string) {
-    return this.http.post(
-      'https://localhost:5001/api/Auth/login',
+  constructor(private http: HttpClient) {
+    this.url = environment.baseUrl + ApiPaths.Auth;
+  }
+
+  login(username: string, password: string): Observable<any> {
+    return this.http.post(this.url+'/login',
       {
-        username: username,
-        password: password
+        username,
+        password
       }
     ).pipe(
       catchError(this.handleError)
     );
   }
 
-  register(username: string, password: string, email: string) {
-    return this.http.post(
-      'https://localhost:5001/api/Auth/register',
+  register(username: string, password: string, email: string): Observable<any> {
+    return this.http.post(this.url + '/register',
       {
-        username: username,
-        password: password,
-        email: email
+        username,
+        password,
+        email
       }
     )
       .pipe(
         catchError(this.handleError)
       );
   }
-  private handleError(errorRes: HttpErrorResponse) {
+  private handleError(errorRes: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred';
 
     switch (errorRes.status) {
