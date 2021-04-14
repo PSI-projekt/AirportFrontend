@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       .subscribe((response: AirportCountDto) => {
         this.airportCount = response.numberOfAirports;
       }, error => {
-        this.toastr.error(error);
+        this.toastr.error('There was an error while processing Your request.');
       });
   }
 
