@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import {ToastrModule} from 'ngx-toastr';
 import {RouterModule, Routes} from '@angular/router';
@@ -37,7 +37,8 @@ const appRoutes: Routes = [
     }),
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
     DatePipe
