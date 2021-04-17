@@ -5,7 +5,13 @@
   padding: 40px;
   margin: auto;
 }
+
 a {
   color: black;
+  transition: color 0.5s;
   text-decoration: none;
+}
+
+a:hover {
+  color: darkgray;
 }
