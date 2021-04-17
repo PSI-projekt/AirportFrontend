@@ -24,7 +24,7 @@
                >
         <label for="password">Password</label>
       </div>
-      <button class="btn-base btn-black w-100" type="submit">Sign in</button>
+      <button class="btn-base btn-black w-100" type="submit" [disabled]="!authForm.valid">Sign in</button>
     </form>
     <p class="mt-2 mb-2 text-muted text-center"> Need an account? <a routerLink="../register"><b>Register</b></a></p>
   </div>
