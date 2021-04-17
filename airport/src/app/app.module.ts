@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import {ToastrModule} from 'ngx-toastr';
 import {RouterModule, Routes} from '@angular/router';
@@ -10,9 +10,13 @@ import {HttpClientModule} from '@angular/common/http';
 import { FlightRowComponent } from './components/home/flight-row/flight-row.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DatePipe} from '@angular/common';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({
@@ -20,7 +24,9 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     TopBarComponent,
-    FlightRowComponent
+    FlightRowComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,8 @@ const appRoutes: Routes = [
     }),
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
     DatePipe
