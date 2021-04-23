@@ -17,14 +17,14 @@
               <div class="col d-flex align-items-center"><span class="material-icons me-2">schedule</span>Delay</div>
             </div>
           </div>
-          <div class="text-center mt-2" *ngIf="isFetching">
-            <div class="spinner-border" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
-          </div>
           <ul class="list-group list-group-flush" *ngIf="flights !== undefined && flights.length > 0 && !isFetching">
             <app-flight-row *ngFor="let flight of flights" [flight]="flight"></app-flight-row>
           </ul>
+        </div>
+        <div class="text-center mt-2" *ngIf="isFetching">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </div>
       </div>
     </div>
