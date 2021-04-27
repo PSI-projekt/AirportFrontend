@@ -9,8 +9,7 @@ import {AuthService} from '../../api/auth.service';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
-
-  user: User | undefined;
+  public user: User | undefined;
 
   constructor(public router: Router, private authService: AuthService) {
     this.authService.currentUser$.subscribe(user => {
@@ -20,7 +19,7 @@ export class TopBarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  logOut(): void {
+  public logOut(): void {
     this.authService.logout();
     this.user = undefined;
     this.router.navigate(['/']);
