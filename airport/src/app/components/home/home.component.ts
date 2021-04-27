@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   public isFirstPage = false;
   public isLastPage = false;
   public fetchFailed = false;
+  public shouldDisplayIcons = true;
 
   constructor(private toastr: ToastrService, private airportService: AirportService, private flightService: FlightService,
               private commonService: CommonService) { }
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getNumberOfAirports();
     this.getFlights(this.commonService.lastPage);
+    this.resizeScreen();
   }
 
   private getNumberOfAirports(): void {
@@ -38,7 +40,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  public getFlights(pageNumber: number = 1, itemsPerPage: number = 10): void{
+  public getFlights(pageNumber: number = 1, itemsPerPage: number = 20): void{
     this.isFetching = true;
     this.flightService.getCurrentFlights(pageNumber, itemsPerPage).subscribe((response: PaginatedResult<Array<FlightDto>>) => {
       this.isFetching = false;
@@ -67,5 +69,10 @@ export class HomeComponent implements OnInit {
     if (targetPage > this.pagination?.totalPages || targetPage < 1) { return; }
 
     this.getFlights(targetPage);
+  }
+
+  public resizeScreen(): void {
+    const screenWidth = window.innerWidth;
+    this.shouldDisplayIcons = screenWidth > 870;
   }
 }
