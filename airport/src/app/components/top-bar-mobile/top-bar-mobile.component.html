@@ -1,0 +1,35 @@
+<div class="container-fluid ps-5 pt-4 pe-5 pb-5 container-custom">
+  <div class="row h-100">
+    <div class="col d-flex justify-content-start align-items-center">
+      <div class="dropdown">
+        <button class="btn-base" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="material-icons">menu</span>
+        </button>
+        <ul class="dropdown-menu rounded-0" aria-labelledby="dropdownMenuButton2">
+          <li><a class="dropdown-item" [class.active-bk]="router.url === '/'" routerLink="/">Home</a></li>
+          <li *ngIf="user !== undefined && (user.role === 1 || user.role === 2)">
+            <a class="dropdown-item" [class.active-bk]="router.url === '/management'" routerLink="/">Management</a>
+          </li>
+          <li *ngIf="user !== undefined && user.role === 0">
+            <a class="dropdown-item" [class.active-bk]="router.url === '/history'" routerLink="/">History</a>
+          </li>
+          <li *ngIf="user !== undefined && user.role === 0">
+            <a class="dropdown-item" [class.active-bk]="router.url === '/account'" routerLink="/">Account</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col d-flex justify-content-center">
+      <img class="img-logo" src="./assets/logo.png" alt="OpoleAirport logo" routerLink="/">
+    </div>
+    <div class="d-flex align-items-center justify-content-end" [class.col-5]="user === undefined" [class.col]="user !== undefined">
+      <div *ngIf="user === undefined">
+        <button class="btn-base btn-transparent me-4" routerLink="/login">Sign In</button>
+        <button class="btn-base btn-black" routerLink="/register">Sign Up</button>
+      </div>
+      <div *ngIf="user !== undefined">
+        <button class="btn-base btn-black" (click)="logOut()">Sign Out</button>
+      </div>
+    </div>
+  </div>
+</div>

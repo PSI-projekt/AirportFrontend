@@ -33,13 +33,17 @@ export class AuthService {
       }
     ).pipe(map((response: UserForLoginDto) => {
       if (response) {
-        localStorage.setItem('access_token', JSON.stringify(response.token));
+        localStorage.setItem('access_token', response.token);
         this.token = response.token;
         this.setUserDetails();
       }
     }),
       catchError(this.handleError)
     );
+  }
+
+  getToken(): string {
+    return this.token;
   }
 
   logout(): void {

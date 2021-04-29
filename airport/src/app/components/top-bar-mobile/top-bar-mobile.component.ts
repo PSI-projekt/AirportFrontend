@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import {User} from '../../interfaces/user';
 import {AuthService} from '../../api/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-top-bar',
-  templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.css']
+  selector: 'app-top-bar-mobile',
+  templateUrl: './top-bar-mobile.component.html',
+  styleUrls: ['./top-bar-mobile.component.css']
 })
-export class TopBarComponent implements OnInit {
+export class TopBarMobileComponent implements OnInit {
   public user: User | undefined;
 
   constructor(public router: Router, private authService: AuthService) {
@@ -17,7 +17,8 @@ export class TopBarComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   public logOut(): void {
     this.authService.logout();

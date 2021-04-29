@@ -1,5 +1,5 @@
-<div class="container-custom">
-  <div class="container bg-white ps-5 pe-5">
+<div class="container-custom" (window:resize)="resizeScreen()">
+  <div class="container-xl bg-white ps-5 pe-5">
     <div class="row">
       <div class="col mb-4">
         <h1 class="mt-5">Choose Your destination</h1>
@@ -8,23 +8,23 @@
         <div class="card mt-4 rounded-0" *ngIf="!fetchFailed && !isFetching">
           <div class="card-header fw-bold">
             <div class="row">
-              <div class="col d-flex align-items-center"><span class="material-icons me-2">today</span>Date</div>
-              <div class="col d-flex align-items-center"><span class="material-icons me-2">place</span>Origin</div>
-              <div class="col d-flex align-items-center"><span class="material-icons me-2">flight_takeoff</span>Departure</div>
-              <div class="col d-flex align-items-center"><span class="material-icons me-2">place</span>Destination</div>
-              <div class="col d-flex align-items-center"><span class="material-icons me-2">flight_land</span>Arrival</div>
-              <div class="col d-flex align-items-center"><span class="material-icons me-2">tag</span>Flight No.</div>
-              <div class="col d-flex align-items-center"><span class="material-icons me-2">schedule</span>Delay</div>
-            </div>
-          </div>
-          <div class="text-center mt-2" *ngIf="isFetching">
-            <div class="spinner-border" role="status">
-              <span class="visually-hidden">Loading...</span>
+              <div class="col d-flex align-items-center text-break"><span class="material-icons me-2" *ngIf="shouldDisplayIcons">today</span>Date</div>
+              <div class="col d-flex align-items-center text-break"><span class="material-icons me-2" *ngIf="shouldDisplayIcons">place</span>Origin</div>
+              <div class="col d-flex align-items-center text-break"><span class="material-icons me-2" *ngIf="shouldDisplayIcons">flight_takeoff</span>Departure</div>
+              <div class="col d-flex align-items-center text-break"><span class="material-icons me-2" *ngIf="shouldDisplayIcons">place</span>Destination</div>
+              <div class="col d-flex align-items-center text-break"><span class="material-icons me-2" *ngIf="shouldDisplayIcons">flight_land</span>Arrival</div>
+              <div class="col d-flex align-items-center text-break"><span class="material-icons me-2" *ngIf="shouldDisplayIcons">tag</span>Flight No.</div>
+              <div class="col d-flex align-items-center text-break"><span class="material-icons me-2" *ngIf="shouldDisplayIcons">schedule</span>Delay</div>
             </div>
           </div>
           <ul class="list-group list-group-flush" *ngIf="flights !== undefined && flights.length > 0 && !isFetching">
             <app-flight-row *ngFor="let flight of flights" [flight]="flight"></app-flight-row>
           </ul>
+        </div>
+        <div class="text-center mt-2" *ngIf="isFetching">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </div>
       </div>
     </div>
@@ -32,18 +32,18 @@
       <div class="col d-flex justify-content-center mb-3">
         <nav aria-label="Page navigation example" *ngIf="flights !== undefined && flights.length > 0 && !isFetching">
           <ul class="pagination">
-            <li class="page-item" [class.disabled]="isFirstPage" (click)="changePage(false)">
+            <li class="page-item noSelect" [class.disabled]="isFirstPage" (click)="changePage(false)">
               <a class="page-link rounded-0" tabindex="-1" aria-disabled="true">Previous</a>
             </li>
-            <li class="page-item" (click)="getFlights(1)"><a class="page-link">1</a></li>
+            <li class="page-item noSelect" (click)="getFlights(1)"><a class="page-link">1</a></li>
             <li class="page-item disabled" *ngIf="pagination?.currentPage === 1 || pagination?.currentPage === pagination?.totalPages">
               <a class="page-link">...</a>
             </li>
             <li class="page-item disabled" *ngIf="pagination?.currentPage !== 1 && pagination?.currentPage !== pagination?.totalPages">
               <a class="page-link">{{pagination?.currentPage}}</a>
             </li>
-            <li class="page-item" (click)="getFlights(pagination?.totalPages)"><a class="page-link">{{pagination?.totalPages}}</a></li>
-            <li class="page-item" [class.disabled]="isLastPage" (click)="changePage(true)">
+            <li class="page-item noSelect" (click)="getFlights(pagination?.totalPages)"><a class="page-link">{{pagination?.totalPages}}</a></li>
+            <li class="page-item noSelect" [class.disabled]="isLastPage" (click)="changePage(true)">
               <a class="page-link rounded-0">Next</a>
             </li>
           </ul>

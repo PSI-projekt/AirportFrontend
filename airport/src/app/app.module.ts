@@ -12,11 +12,18 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DatePipe} from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { BookingComponent } from './components/booking/booking.component';
+import { PassengerComponent } from './components/booking/passenger/passenger.component';
+import {PlatformModule} from '@angular/cdk/platform';
+import { TopBarMobileComponent } from './components/top-bar-mobile/top-bar-mobile.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'buy', component: BookingComponent },
+  { path: 'payment', component: PaymentComponent }
 ];
 
 @NgModule({
@@ -26,7 +33,11 @@ const appRoutes: Routes = [
     TopBarComponent,
     FlightRowComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    BookingComponent,
+    PassengerComponent,
+    TopBarMobileComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +51,9 @@ const appRoutes: Routes = [
     }),
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    PlatformModule,
+    ReactiveFormsModule
   ],
   providers: [
     DatePipe,

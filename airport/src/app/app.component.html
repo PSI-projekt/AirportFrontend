@@ -1,4 +1,5 @@
-<div *ngIf="router.url !== '/login' && router.url !== '/register'">
-  <app-top-bar></app-top-bar>
+<div *ngIf="router.url !== '/login' && router.url !== '/register'" (window:resize)="resizeScreen()">
+  <app-top-bar *ngIf="!shouldBeDropdown"></app-top-bar>
+  <app-top-bar-mobile *ngIf="shouldBeDropdown"></app-top-bar-mobile>
 </div>
 <router-outlet></router-outlet>

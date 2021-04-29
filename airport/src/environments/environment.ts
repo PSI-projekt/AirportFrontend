@@ -11,7 +11,10 @@ export enum ApiPaths {
   Auth = '/auth',
   AirportApi = '/airport',
   Airplane = '/airplane',
-  Flight = '/flight'
+  Flight = '/flight',
+  User = '/user',
+  Passenger = '/passenger',
+  Booking = '/booking'
 }
 
 /*

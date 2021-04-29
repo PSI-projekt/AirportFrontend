@@ -34,6 +34,7 @@
               "./node_modules/material-icons/css/material-icons.css"
             ],
             "scripts": [
+              "./node_modules/@popperjs/core/dist/umd/popper.js",
               "./node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },

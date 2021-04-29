@@ -1,0 +1,9 @@
+.img-logo {
+  max-width: 10rem;
+  max-height: 4rem;
+}
+
+.active-bk, .dropdown-item:active {
+  background-color: black;
+  color: white;
+}
