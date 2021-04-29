@@ -35,13 +35,15 @@ const appRoutes: Routes = [
       progressBar: true,
       progressAnimation: 'increasing'
     }),
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {
+      onSameUrlNavigation: 'reload'
+    }),
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule
   ],
   providers: [
-    DatePipe
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

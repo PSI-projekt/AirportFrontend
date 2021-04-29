@@ -6,10 +6,21 @@
     <div class="col-4 d-flex justify-content-center align-items-center">
       <button class="fw-bold btn-base btn-navigation" [class.text-decoration-underline]="router.url === '/'"
               routerLink="/">Home</button>
+      <button class="fw-bold btn-base btn-navigation ms-5" [class.text-decoration-underline]="router.url === '/'"
+              routerLink="/" *ngIf="user !== undefined && (user.role === 1 || user.role === 2)">Management</button>
+      <button class="fw-bold btn-base btn-navigation ms-5" [class.text-decoration-underline]="router.url === '/'"
+              routerLink="/" *ngIf="user !== undefined && user.role === 0">History</button>
+      <button class="fw-bold btn-base btn-navigation ms-5" [class.text-decoration-underline]="router.url === '/'"
+              routerLink="/" *ngIf="user !== undefined && user.role === 0">Account</button>
     </div>
     <div class="col-4 d-flex justify-content-end align-items-center">
-      <button class="btn-base btn-transparent me-4" routerLink="../login">Sign In</button>
-      <button class="btn-base btn-black" routerLink="../register">Sign Up</button>
+      <div *ngIf="user === undefined">
+        <button class="btn-base btn-transparent me-4" routerLink="/login">Sign In</button>
+        <button class="btn-base btn-black" routerLink="/register">Sign Up</button>
+      </div>
+      <div *ngIf="user !== undefined">
+        <button class="btn-base btn-black" (click)="logOut()">Sign Out</button>
+      </div>
     </div>
   </div>
 </div>

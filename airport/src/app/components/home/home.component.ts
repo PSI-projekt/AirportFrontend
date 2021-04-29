@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import {FlightDto} from '../../api/dtos/flight.dto';
 import {FlightService} from '../../api/flight.service';
 import {PaginatedResult, Pagination} from '../../api/dtos/pagination';
-import {GlobalVariablesService} from '../../services/global-variables.service';
+import {CommonService} from '../../services/common.service';
 
 @Component({
   selector: 'app-home',
@@ -22,11 +22,11 @@ export class HomeComponent implements OnInit {
   public fetchFailed = false;
 
   constructor(private toastr: ToastrService, private airportService: AirportService, private flightService: FlightService,
-              private globalVars: GlobalVariablesService) { }
+              private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.getNumberOfAirports();
-    this.getFlights(this.globalVars.lastPage);
+    this.getFlights(this.commonService.lastPage);
   }
 
   private getNumberOfAirports(): void {
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
       this.isFirstPage = this.pagination?.currentPage === 1;
       this.isLastPage = this.pagination?.totalPages === this.pagination?.currentPage;
 
-      this.globalVars.setLastPage(this.pagination?.currentPage);
+      this.commonService.setLastPage(this.pagination?.currentPage);
     }, error => {
       this.isFetching = false;
       this.fetchFailed = true;
@@ -65,9 +65,6 @@ export class HomeComponent implements OnInit {
     switchToNext ? targetPage++ : targetPage--;
     // @ts-ignore
     if (targetPage > this.pagination?.totalPages || targetPage < 1) { return; }
-
-    console.log(this.pagination?.currentPage);
-    console.log(targetPage);
 
     this.getFlights(targetPage);
   }
