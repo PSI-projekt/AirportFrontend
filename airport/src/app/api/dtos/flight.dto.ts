@@ -8,6 +8,7 @@ export interface FlightDto {
   timeOfArrival: string;
   flightNumber: string;
   status: string;
+  pricePerPassenger: number;
   origin: AirportForFlightDto;
   destination: AirportForFlightDto;
 }
