@@ -16,6 +16,7 @@
                   <div class="col d-flex align-items-center"><span class="material-icons me-2">place</span>To</div>
                   <div class="col d-flex align-items-center"><span class="material-icons me-2">flight_takeoff</span>Departure</div>
                   <div class="col d-flex align-items-center"><span class="material-icons me-2">flight_land</span>Arrival</div>
+                  <div class="col d-flex align-items-center"><span class="material-icons me-2">monetization_on</span>Price</div>
                   <div class="col d-flex align-items-center text-center">
                     <span class="material-icons me-2">airline_seat_recline_normal</span>Available seats
                   </div>
@@ -29,6 +30,7 @@
                     <div class="col">{{selectedFlight?.destination?.codeIATA}}</div>
                     <div class="col">{{selectedFlight?.timeOfDeparture}}</div>
                     <div class="col">{{selectedFlight?.timeOfArrival}}</div>
+                    <div class="col">{{selectedFlight?.pricePerPassenger}} PLN</div>
                     <div class="col">{{seatCountForFlightDto?.seatCount}}</div>
                   </div>
                 </li>
