@@ -25,6 +25,7 @@ export class BookingComponent implements OnInit, AfterViewInit, OnDestroy {
   public passengersForm!: FormGroup;
   public even: number[] = [];
   public odd: number[] = [];
+  public shouldDisplayIcons = true;
 
   constructor(private toastr: ToastrService, private commonService: CommonService, private changeDetector: ChangeDetectorRef,
               private flightService: FlightService, public router: Router, private formBuilder: FormBuilder,
@@ -40,6 +41,7 @@ export class BookingComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.getNumberOfSeats();
     this.getPassengersData();
+    this.resizeScreen();
   }
 
   ngAfterViewInit(): void {
@@ -122,5 +124,10 @@ export class BookingComponent implements OnInit, AfterViewInit, OnDestroy {
     }, () => {
       this.toastr.error('An error occurred while processing Your request. Please check Your inputs and try again');
     });
+  }
+
+  public resizeScreen(): void {
+    const screenWidth = window.innerWidth;
+    this.shouldDisplayIcons = screenWidth > 870;
   }
 }
