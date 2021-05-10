@@ -8,7 +8,7 @@
         <ul class="dropdown-menu rounded-0" aria-labelledby="dropdownMenuButton2">
           <li><a class="dropdown-item" [class.active-bk]="router.url === '/'" routerLink="/">Home</a></li>
           <li *ngIf="user !== undefined && (user.role === 1 || user.role === 2)">
-            <a class="dropdown-item" [class.active-bk]="router.url === '/management'" routerLink="/">Management</a>
+            <a class="dropdown-item" [class.active-bk]="router.url === '/management'" routerLink="/management">Management</a>
           </li>
           <li *ngIf="user !== undefined && user.role === 0">
             <a class="dropdown-item" [class.active-bk]="router.url === '/history'" routerLink="/">History</a>

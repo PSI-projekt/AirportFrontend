@@ -17,13 +17,15 @@ import { PassengerComponent } from './components/booking/passenger/passenger.com
 import {PlatformModule} from '@angular/cdk/platform';
 import { TopBarMobileComponent } from './components/top-bar-mobile/top-bar-mobile.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { ManagementComponent } from './components/management/management.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'buy', component: BookingComponent },
-  { path: 'payment', component: PaymentComponent }
+  { path: 'payment', component: PaymentComponent },
+  { path: 'management', component: ManagementComponent }
 ];
 
 @NgModule({
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     PassengerComponent,
     TopBarMobileComponent,
     PaymentComponent,
+    ManagementComponent,
   ],
   imports: [
     BrowserModule,
