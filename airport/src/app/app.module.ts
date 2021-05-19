@@ -18,6 +18,7 @@ import {PlatformModule} from '@angular/cdk/platform';
 import { TopBarMobileComponent } from './components/top-bar-mobile/top-bar-mobile.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ManagementComponent } from './components/management/management.component';
+import { EmployeeAccountComponent } from './components/management/employee-account/employee-account.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'buy', component: BookingComponent },
   { path: 'payment', component: PaymentComponent },
-  { path: 'management', component: ManagementComponent }
+  { path: 'management', component: ManagementComponent },
+  { path: 'management/employee/create', component: EmployeeAccountComponent }
 ];
 
 @NgModule({
@@ -41,6 +43,7 @@ const appRoutes: Routes = [
     TopBarMobileComponent,
     PaymentComponent,
     ManagementComponent,
+    EmployeeAccountComponent,
   ],
   imports: [
     BrowserModule,
