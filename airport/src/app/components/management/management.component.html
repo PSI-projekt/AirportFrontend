@@ -42,7 +42,7 @@
                     <button class="btn-base btn-purple w-100" routerLink="/">Edit user</button>
                   </div>
                   <div class="col p-4">
-                    <button class="btn-base btn-purple w-100" routerLink="/" *ngIf="user?.role === 2">Add employee</button>
+                    <button class="btn-base btn-purple w-100" routerLink="/management/employee/create" *ngIf="user?.role === 2">Add employee</button>
                   </div>
                 </div>
               </div>
