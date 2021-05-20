@@ -19,6 +19,8 @@ import { TopBarMobileComponent } from './components/top-bar-mobile/top-bar-mobil
 import { PaymentComponent } from './components/payment/payment.component';
 import { ManagementComponent } from './components/management/management.component';
 import { EmployeeAccountComponent } from './components/management/employee-account/employee-account.component';
+import { HistoryComponent } from './components/history/history.component';
+import { HistoryRowComponent } from './components/history/history-row/history-row.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,6 +29,7 @@ const appRoutes: Routes = [
   { path: 'buy', component: BookingComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'management', component: ManagementComponent },
+  { path: 'history', component: HistoryComponent },
   { path: 'management/employee/create', component: EmployeeAccountComponent }
 ];
 
@@ -44,6 +47,8 @@ const appRoutes: Routes = [
     PaymentComponent,
     ManagementComponent,
     EmployeeAccountComponent,
+    HistoryComponent,
+    HistoryRowComponent,
   ],
   imports: [
     BrowserModule,
