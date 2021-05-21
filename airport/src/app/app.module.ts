@@ -21,6 +21,7 @@ import { ManagementComponent } from './components/management/management.componen
 import { EmployeeAccountComponent } from './components/management/employee-account/employee-account.component';
 import { HistoryComponent } from './components/history/history.component';
 import { HistoryRowComponent } from './components/history/history-row/history-row.component';
+import { PassengerRowComponent } from './components/history/history-row/passenger-row/passenger-row.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
     EmployeeAccountComponent,
     HistoryComponent,
     HistoryRowComponent,
+    PassengerRowComponent,
   ],
   imports: [
     BrowserModule,
