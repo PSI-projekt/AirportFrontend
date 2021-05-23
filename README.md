@@ -1,5 +1,5 @@
 # AirportFrontend
-Front-end application for Airprt.  
+Frontend application for Airprt.  
 Application allows basic functionality for the users, and provide management capabilites for administrators and employees.  
 Autentication of users is realised with JWT. Backend part of this application is presented in [this](https://github.com/PSI-projekt/AirportBackend) project.
 ## UI design
