@@ -26,6 +26,7 @@ export class BookingComponent implements OnInit, AfterViewInit, OnDestroy {
   public even: number[] = [];
   public odd: number[] = [];
   public shouldDisplayIcons = true;
+  public isFetching = false;
 
   constructor(private toastr: ToastrService, private commonService: CommonService, private changeDetector: ChangeDetectorRef,
               private flightService: FlightService, public router: Router, private formBuilder: FormBuilder,
@@ -96,6 +97,7 @@ export class BookingComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public submitForm(): void {
+    this.isFetching = true;
     const passengers = new Array<PassengerForBookingDto>();
 
     for (let i = 0; i < this.numberOfPassengers; i++) {
@@ -120,8 +122,10 @@ export class BookingComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.bookingService.makeBooking(booking).subscribe((response: PaymentDto) => {
       this.commonService.paymentDetails = response;
+      this.isFetching = false;
       this.router.navigate(['/payment']);
     }, () => {
+      this.isFetching = false;
       this.toastr.error('An error occurred while processing Your request. Please check Your inputs and try again');
     });
   }
