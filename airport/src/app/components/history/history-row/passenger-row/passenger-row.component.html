@@ -1,0 +1,31 @@
+<div class="accordion-item rounded-0 no-shadow">
+  <h2 class="accordion-header no-shadow">
+    <button class="accordion-button collapsed rounded-0 no-shadow small" type="button" data-bs-toggle="collapse" attr.data-bs-target="#b{{bookingId}}passenger{{passenger?.id}}">
+      {{passenger?.firstName}} {{passenger?.lastName}}
+    </button>
+  </h2>
+  <div id="b{{bookingId}}passenger{{passenger?.id}}" class="accordion-collapse collapse rounded-0 no-shadow">
+    <div class="col pt-2 pb-2 ps-4 pe-4">
+      <div class="row">
+        <div class="col-5 fw-bold">Address:</div>
+        <div class="col">{{passenger?.street}} {{passenger?.streetNumber}}</div>
+      </div>
+      <div class="row">
+        <div class="col-5 fw-bold">City:</div>
+        <div class="col">{{passenger?.city}}</div>
+      </div>
+      <div class="row">
+        <div class="col-5 fw-bold">Post Code:</div>
+        <div class="col">{{passenger?.postCode}}</div>
+      </div>
+      <div class="row">
+        <div class="col-5 fw-bold">Country:</div>
+        <div class="col">{{passenger?.country}}</div>
+      </div>
+      <div class="row">
+        <div class="col-5 fw-bold">PESEL/Passport no.:</div>
+        <div class="col">{{passenger?.idNumber}}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,6 @@ export interface Pagination {
 }
 
 export class PaginatedResult<T> {
-  result: Array<FlightDto> | undefined;
+  result: T | undefined;
   pagination: Pagination | undefined;
 }
