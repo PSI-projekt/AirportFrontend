@@ -14,7 +14,7 @@
             <a class="dropdown-item" [class.active-bk]="router.url === '/history'" routerLink="/">History</a>
           </li>
           <li *ngIf="user !== undefined && user.role === 0">
-            <a class="dropdown-item" [class.active-bk]="router.url === '/account'" routerLink="/">Account</a>
+            <a class="dropdown-item" [class.active-bk]="router.url === '/account'" routerLink="/account">Account</a>
           </li>
         </ul>
       </div>
