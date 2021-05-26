@@ -1,0 +1,227 @@
+<div class="container-custom">
+  <div class="overlay" *ngIf="isFetching">
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure to delete this account?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-base btn-black w-10" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn-base btn-red w-20" (click)="onDelete()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-xl bg-white ps-5 pe-5">
+    <div class="row">
+      <div class="col mb-5">
+        <h1 class="mt-5">Account details</h1>
+        <div class="row">
+          <div class="col">
+            <div class="card mt-4 rounded-0">
+              <div class="card-body">
+                <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">account_circle</span>Personal information</h5>
+                <form [formGroup]="editForm" class="text-center" (ngSubmit)="onSubmit(editForm)">
+                  <div class="col mt-4">
+                    <div class="row mb-3">
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="firstName"
+                                 placeholder="First Name"
+                                 formControlName="firstName"
+                                 name="firstName"
+                                 required
+                                 [attr.disabled]="!this.EditModePD ? '' : null">
+                          <label for="firstName">First Name</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="lastName"
+                                 placeholder="Last Name"
+                                 formControlName="lastName"
+                                 name="lastName"
+                                 required
+                                 [attr.disabled]="!this.EditModePD ? '' : null">
+                          <label for="lastName">Last Name</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="idNumber"
+                                 placeholder="PESEL"
+                                 formControlName="idNumber"
+                                 name="idNumber"
+                                 required
+                                 [attr.disabled]="!this.EditModePD ? '' : null">
+                          <label for="idNumber">PESEL or Passport no.</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="country"
+                                 placeholder="Country"
+                                 formControlName="country"
+                                 name="country"
+                                 required
+                                 [attr.disabled]="!this.EditModePD ? '' : null">
+                          <label for="country">Country</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="street"
+                                 placeholder="Street"
+                                 formControlName="street"
+                                 name="street"
+                                 required
+                                 [attr.disabled]="!this.EditModePD ? '' : null">
+                          <label for="street">Street</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="number"
+                                 placeholder="Number"
+                                 formControlName="number"
+                                 name="number"
+                                 required
+                                 [attr.disabled]="!this.EditModePD ? '' : null">
+                          <label for="number">Number</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="city"
+                                 placeholder="City"
+                                 formControlName="city"
+                                 name="city"
+                                 required
+                                 [attr.disabled]="!this.EditModePD ? '' : null">
+                          <label for="city">City</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="postalCode"
+                                 placeholder="Postal Code"
+                                 formControlName="postalCode"
+                                 name="postalCode"
+                                 required
+                                 [attr.disabled]="!this.EditModePD ? '' : null">
+                          <label for="postalCode">Postal Code</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="row">
+                  <div class="col p-4">
+                    <button class="btn-base btn-border w-100" *ngIf="this.EditModePD" (click)="onSubmit(editForm)">Save</button>
+                    <button class="btn-base btn-black w-100" *ngIf="!this.EditModePD" (click)="togglePD()">Edit</button>
+                  </div>
+                  <div class="col p-4">
+                    <button class="btn-base btn-black w-100" *ngIf="this.EditModePD" (click)="togglePD()">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <!--<div class="card mt-4 rounded-0">
+              <div class="card-body">
+                <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">vpn_key</span>Account details</h5>
+                <form [formGroup]="editForm" class="text-center" (ngSubmit)="onSubmit(editForm)">
+                  <div class="col mt-4">
+                    <div class="row mb-3">
+                      <div class="col">
+                        <div class="form-floating">
+                          <input [disabled]="true" type="text"
+                                 class="form-control rounded-0"
+                                 id="email"
+                                 placeholder="e-mail"
+                                 formControlName="email"
+                                 name="email"
+                                 required
+                                 [attr.disabled]="!this.EditModeAD ? '' : null"
+                                 >
+                          <label for="firstName">e-mail</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="password"
+                                 placeholder="Password"
+                                 formControlName="password"
+                                 name="password"
+                                 required
+                                 [attr.disabled]="!this.EditModeAD ? '' : null"
+                                 >
+                          <label for="lastName">Password</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="row">
+                  <div class="col p-4">
+                    <button class="btn-base btn-border w-100" *ngIf="this.EditModeAD" (click)="editUserData()">Save</button>
+                    <button class="btn-base btn-black w-100" *ngIf="!this.EditModeAD" (click)="toggleAD()">Edit</button>
+                  </div>
+                  <div class="col p-4">
+                    <button class="btn-base btn-black w-100" *ngIf="this.EditModeAD" (click)="toggleAD()">Cancel</button>
+                  </div>
+                </div>
+              </div>(click)="onDelete()"
+            </div>-->
+            <div class="card mt-4 rounded-0">
+              <div class="card-body">
+                <h5 class="card-title col d-flex align-items-center" style="color:#B71C1C"><span class="material-icons me-2">delete</span>Danger zone</h5>
+                <div class="row">
+                  <div class="col p-4">
+                    <button class="btn-base btn-red w-20" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete account</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
