@@ -7,10 +7,10 @@ import { UserForDetailsDto } from '../../api/dtos/user-for-details.dto';
 import { AirportService } from '../../api/airport.service';
 import { AirportForEditDto } from '../../api/dtos/airport-for-edit.dto';
 import { AirportForListDto } from '../../api/dtos/airport-for-list.dto';
-import { CommonService } from '../../services/common.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../api/auth.service';
 import { User } from '../../interfaces/user';
+import { Privileges } from '../../enums/privileges.enum';
 
 @Component({
   selector: 'app-airport',
@@ -20,8 +20,8 @@ import { User } from '../../interfaces/user';
 export class AirportComponent implements OnInit {
   public isFetching = false;
   public loggedUser: User | undefined;
-  public user: UserForDetailsDto | undefined;
   public airports: Array<AirportForListDto> | undefined;
+  public id: number | undefined;
   public editForm = new FormGroup({
     name: new FormControl(''),
     country: new FormControl(''),
@@ -32,7 +32,7 @@ export class AirportComponent implements OnInit {
 
   constructor(private toastr: ToastrService, private userService: UserService,
     private airportService: AirportService, public router: Router, private authService: AuthService) {
-    this.authService.currentUser$.subscribe(user => {
+      this.authService.currentUser$.subscribe(user => {
       this.loggedUser = user;
     });
   }
@@ -50,7 +50,7 @@ export class AirportComponent implements OnInit {
 
     const airport_: AirportForEditDto = {
       // @ts-ignore
-      id: form.controls['id'].value,
+      id: this.id,
       name: form.controls['name'].value,
       country: form.controls['country'].value,
       city: form.controls['city'].value,
@@ -74,25 +74,24 @@ export class AirportComponent implements OnInit {
   }
 
   private getAirportList(): void {
-    this.airportService.getAirportList().subscribe((response: Array<AirportForListDto>) => {
-      this.airports = response;
-      this.setValues(this.airports);
-    }, error => {
-      this.toastr.error('An error occurred while fetching the airport details.');
-    });
+    if (this.loggedUser === undefined || this.loggedUser.role === Privileges.applicationUser) {
+      this.router.navigate(['/'])
+    }
+    else {
+      this.airportService.getAirportList().subscribe((response: Array<AirportForListDto>) => {
+        this.airports = response;
+        this.setValues(this.airports);
+      }, error => {
+        this.toastr.error('An error occurred while fetching the airport details.');
+      });
+    }
   }
 
-  public listAirports(): void {
-
-    if(this.airports?.length == 0)
-      document.getElementById("airportList").innerHTML = "<option></option>";
-      else
-      {
-        var airportOptions = "";
-        for (var airport of this.airports!){
-          airportOptions += "<option>"+airport.name+"</option>";
-        }
-      }    
+  public setAirport(event: any): void {
+    if (event.target.value > -1) {
+      // @ts-ignore
+      this.setValues(this.airports[event.target.value]);
+    }
   }
 
   public setValues(data: any): void {
@@ -103,5 +102,6 @@ export class AirportComponent implements OnInit {
       street: data.street,      
       codeIATA: data.codeIATA,      
     });
+    this.id = data.id;
   }  
 }

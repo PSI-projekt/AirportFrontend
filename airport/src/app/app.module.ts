@@ -33,7 +33,7 @@ const appRoutes: Routes = [
   { path: 'management', component: ManagementComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'management/employee/create', component: EmployeeAccountComponent },
-  { path: 'airport', component: AirportComponent }
+  { path: 'management/airport/edit', component: AirportComponent }
 ];
 
 @NgModule({

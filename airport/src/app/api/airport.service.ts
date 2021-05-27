@@ -10,6 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 import { AuthService } from './auth.service';
 import { AirportForEditDto } from './dtos/airport-for-edit.dto';
 import { AirportForListDto } from './dtos/airport-for-list.dto';
+import { AirportCountDto } from './dtos/airport-count.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +37,8 @@ export class AirportService {
       Authorization: `Bearer ${this.authService.getToken()}`
     });
 
-    return this.http.get<AirportForListDto>(this.url, { headers }).pipe(
-      map((responseData: AirportForListDto) => responseData));
+    return this.http.get<Array<AirportForListDto>>(this.url, { headers }).pipe(
+      map((responseData: Array<AirportForListDto>) => responseData));
   }
 
   public edit(airportForEdit: AirportForEditDto): Observable<AirportForEditDto> {
