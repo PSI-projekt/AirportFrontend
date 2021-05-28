@@ -18,6 +18,7 @@ import {PlatformModule} from '@angular/cdk/platform';
 import { TopBarMobileComponent } from './components/top-bar-mobile/top-bar-mobile.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ManagementComponent } from './components/management/management.component';
+import { AccountComponent } from './components/account/account.component';
 import { EmployeeAccountComponent } from './components/management/employee-account/employee-account.component';
 import { HistoryComponent } from './components/history/history.component';
 import { HistoryRowComponent } from './components/history/history-row/history-row.component';
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'buy', component: BookingComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'management', component: ManagementComponent },
+  { path: 'account', component: AccountComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'management/employee/create', component: EmployeeAccountComponent }
 ];
@@ -47,6 +49,7 @@ const appRoutes: Routes = [
     TopBarMobileComponent,
     PaymentComponent,
     ManagementComponent,
+    AccountComponent,
     EmployeeAccountComponent,
     HistoryComponent,
     HistoryRowComponent,

@@ -172,3 +172,17 @@ html {
   color: #9C27B0;
   box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.25);
 }
+
+.btn-border {
+  border-radius: 0px;
+  border-width: 2px;
+  border-color: black;
+}
+
+.btn-border:hover {
+  background-color: rgb(90 90 90);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.25);
+}
+
