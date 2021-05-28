@@ -13,10 +13,10 @@
                 <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">flight_takeoff</span>Flights</h5>
                   <div class="row">
                     <div class="col p-4">
-                      <button class="btn-base btn-blue w-100" routerLink="/">Add new</button>
+                      <button class="btn-base btn-blue w-100" routerLink="/management">Add new</button>
                     </div>
                     <div class="col p-4">
-                      <button class="btn-base btn-blue w-100" routerLink="/">Edit</button>
+                      <button class="btn-base btn-blue w-100" routerLink="/management">Edit</button>
                     </div>
                   </div>
               </div>
@@ -26,23 +26,18 @@
                 <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">airplane_ticket</span>Reservations</h5>
                 <div class="row">
                   <div class="col p-4">
-                    <button class="btn-base btn-indigo w-100" routerLink="/">Add new</button>
+                    <button class="btn-base btn-indigo w-100" routerLink="/management">Add new</button>
                   </div>
                   <div class="col p-4">
-                    <button class="btn-base btn-indigo w-100" routerLink="/">Edit</button>
+                    <button class="btn-base btn-indigo w-100" routerLink="/management">Edit</button>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="card mt-4 rounded-0">
-              <div class="card-body">
-                <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">build</span>Miscellaneous</h5>
                 <div class="row">
                   <div class="col p-4">
-                    <button class="btn-base btn-purple w-100" routerLink="/">Edit user</button>
+                    <button class="btn-base btn-indigo w-100" routerLink="/management">Confirm Payment</button>
                   </div>
                   <div class="col p-4">
-                    <button class="btn-base btn-purple w-100" routerLink="/" *ngIf="user?.role === 2">Add employee</button>
+<!--                    <button class="btn-base btn-indigo w-100" routerLink="/management">Edit</button>-->
                   </div>
                 </div>
               </div>
@@ -54,10 +49,10 @@
                 <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">place</span>Destinations</h5>
                 <div class="row">
                   <div class="col p-4">
-                    <button class="btn-base btn-teal w-100" routerLink="/">Add new</button>
+                    <button class="btn-base btn-teal w-100" routerLink="/management">Add new</button>
                   </div>
                   <div class="col p-4">
-                    <button class="btn-base btn-teal w-100" routerLink="/">Edit</button>
+                    <button class="btn-base btn-teal w-100" routerLink="/management">Edit</button>
                   </div>
                 </div>
               </div>
@@ -67,10 +62,23 @@
                 <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">flight</span>Airplanes</h5>
                 <div class="row">
                   <div class="col p-4">
-                    <button class="btn-base btn-green w-100" routerLink="/">Add new</button>
+                    <button class="btn-base btn-green w-100" routerLink="/management">Add new</button>
                   </div>
                   <div class="col p-4">
-                    <button class="btn-base btn-green w-100" routerLink="/">Edit</button>
+                    <button class="btn-base btn-green w-100" routerLink="/management">Edit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mt-4 rounded-0">
+              <div class="card-body">
+                <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">build</span>Miscellaneous</h5>
+                <div class="row">
+                  <div class="col p-4">
+                    <button class="btn-base btn-purple w-100" routerLink="/management">Edit user</button>
+                  </div>
+                  <div class="col p-4">
+                    <button class="btn-base btn-purple w-100" routerLink="/management/employee/create" *ngIf="user?.role === 2">Add employee</button>
                   </div>
                 </div>
               </div>

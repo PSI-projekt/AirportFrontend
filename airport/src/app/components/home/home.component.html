@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="pagination !== undefined && pagination.totalPages > 1">
       <div class="col d-flex justify-content-center mb-3">
         <nav aria-label="Page navigation example" *ngIf="flights !== undefined && flights.length > 0 && !isFetching">
           <ul class="pagination">
