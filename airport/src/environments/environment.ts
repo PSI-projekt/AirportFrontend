@@ -15,7 +15,8 @@ export enum ApiPaths {
   User = '/user',
   Passenger = '/passenger',
   Booking = '/booking',
-  Employee = '/employee'
+  Employee = '/employee',
+  Payment = '/payment'
 }
 
 /*
