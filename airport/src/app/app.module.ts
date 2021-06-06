@@ -23,6 +23,7 @@ import { EmployeeAccountComponent } from './components/management/employee-accou
 import { HistoryComponent } from './components/history/history.component';
 import { HistoryRowComponent } from './components/history/history-row/history-row.component';
 import { PassengerRowComponent } from './components/history/history-row/passenger-row/passenger-row.component';
+import { PaymentConfirmationComponent } from './components/management/payment-confirmation/payment-confirmation.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
   { path: 'management', component: ManagementComponent },
   { path: 'account', component: AccountComponent },
   { path: 'history', component: HistoryComponent },
-  { path: 'management/employee/create', component: EmployeeAccountComponent }
+  { path: 'management/employee/create', component: EmployeeAccountComponent },
+  { path: 'management/payment/confirm', component: PaymentConfirmationComponent }
 ];
 
 @NgModule({
@@ -54,6 +56,7 @@ const appRoutes: Routes = [
     HistoryComponent,
     HistoryRowComponent,
     PassengerRowComponent,
+    PaymentConfirmationComponent,
   ],
   imports: [
     BrowserModule,
