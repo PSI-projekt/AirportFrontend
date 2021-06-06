@@ -33,7 +33,7 @@ export class PaymentConfirmationComponent implements OnInit {
   }
 
   private redirect(): void {
-    if (this.user === undefined || this.user.role === Privileges.applicationUser || this.user.role === Privileges.employee) {
+    if (this.user === undefined || this.user.role === Privileges.applicationUser) {
       this.router.navigate(['/']);
     }
   }
