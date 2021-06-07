@@ -1,0 +1,4 @@
+.disabled-field {
+  pointer-events: none;
+  display: none;
+}
