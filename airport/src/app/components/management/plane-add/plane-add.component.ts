@@ -6,6 +6,7 @@ import {User} from '../../../interfaces/user';
 import {FormGroup, NgForm} from "@angular/forms";
 import {AirplaneForAddDto} from "../../../api/dtos/airplane-for-add.dto";
 import {AirplaneService} from "../../../api/airplane.service";
+import {Privileges} from "../../../enums/privileges.enum";
 
 @Component({
   selector: 'app-plane-add',
@@ -24,6 +25,13 @@ export class PlaneAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.redirect();
+  }
+
+  private redirect(): void {
+    if (this.user === undefined || this.user.role === Privileges.applicationUser) {
+      this.router.navigate(['/']);
+    }
   }
 
   public onSubmit(form: NgForm): void {
