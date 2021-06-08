@@ -12,7 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DatePipe} from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { BookingComponent } from './components/booking/booking.component';
+import { BookingAddComponent } from './components/booking/booking-add/booking-add.component';
 import { PassengerComponent } from './components/booking/passenger/passenger.component';
 import {PlatformModule} from '@angular/cdk/platform';
 import { TopBarMobileComponent } from './components/top-bar-mobile/top-bar-mobile.component';
@@ -25,12 +25,13 @@ import { HistoryRowComponent } from './components/history/history-row/history-ro
 import { PassengerRowComponent } from './components/history/history-row/passenger-row/passenger-row.component';
 import { PaymentConfirmationComponent } from './components/management/payment-confirmation/payment-confirmation.component';
 import { FlightAddComponent } from './components/management/flight-add/flight-add.component';
+import { BookingEditComponent } from './components/booking/booking-edit/booking-edit.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'buy', component: BookingComponent },
+  { path: 'buy', component: BookingAddComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'management', component: ManagementComponent },
   { path: 'account', component: AccountComponent },
@@ -48,7 +49,7 @@ const appRoutes: Routes = [
     FlightRowComponent,
     LoginComponent,
     RegisterComponent,
-    BookingComponent,
+    BookingAddComponent,
     PassengerComponent,
     TopBarMobileComponent,
     PaymentComponent,
@@ -60,6 +61,7 @@ const appRoutes: Routes = [
     PassengerRowComponent,
     PaymentConfirmationComponent,
     FlightAddComponent,
+    BookingEditComponent,
   ],
   imports: [
     BrowserModule,
