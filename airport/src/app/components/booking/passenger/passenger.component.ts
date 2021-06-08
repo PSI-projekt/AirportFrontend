@@ -6,6 +6,7 @@ import {UserForDetailsDto} from '../../../api/dtos/user-for-details.dto';
 import {CommonService} from '../../../services/common.service';
 import {ToastrService} from 'ngx-toastr';
 import {PassengerForListDto} from '../../../api/dtos/passenger-for-list.dto';
+import {AuthService} from '../../../api/auth.service';
 
 @Component({
   selector: 'app-passenger',
@@ -18,9 +19,14 @@ export class PassengerComponent implements OnInit, OnDestroy {
   @Input() parentForm!: FormGroup;
   public passengers: Array<PassengerForListDto> | undefined;
   public user: UserForDetailsDto | undefined;
+  public userRole: number | undefined;
 
-  constructor(private toastr: ToastrService, private userService: UserService, private commonService: CommonService) {
+  constructor(private toastr: ToastrService, private userService: UserService, private commonService: CommonService,
+              private authService: AuthService) {
     this.passengers = commonService.passengers;
+    this.authService.currentUser$.subscribe(user => {
+      this.userRole = user?.role;
+    });
   }
 
   ngOnInit(): void {
