@@ -78,7 +78,7 @@ export class AirportComponent implements OnInit {
       this.router.navigate(['/'])
     }
     else {
-      this.airportService.getAirportList().subscribe((response: Array<AirportForListDto>) => {
+      this.airportService.GetAirports().subscribe((response: Array<AirportForListDto>) => {
         this.airports = response;
         this.setValues(this.airports);
       }, error => {
