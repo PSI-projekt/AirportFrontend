@@ -4,6 +4,7 @@ import {PaginatedResult, Pagination} from '../../api/dtos/pagination';
 import {BookingService} from '../../api/booking.service';
 import {CommonService} from '../../services/common.service';
 import {ToastrService} from 'ngx-toastr';
+import {AuthService} from "../../api/auth.service";
 
 @Component({
   selector: 'app-history',
@@ -16,8 +17,14 @@ export class HistoryComponent implements OnInit {
   public isFirstPage = false;
   public isLastPage = false;
   public pagination: Pagination | undefined;
+  public userRole: number | undefined;
 
-  constructor(private toastr: ToastrService, private bookingService: BookingService, private commonService: CommonService) { }
+  constructor(private toastr: ToastrService, private bookingService: BookingService, private commonService: CommonService,
+              private authService: AuthService) {
+    this.authService.currentUser$.subscribe(user => {
+      this.userRole = user?.role;
+    });
+  }
 
   ngOnInit(): void {
     this.getBookings();
