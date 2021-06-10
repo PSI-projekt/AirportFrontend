@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {FlightDto} from './dtos/flight.dto';
-import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {ApiPaths, environment} from '../../environments/environment';
-import {map} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {PaginatedResult} from './dtos/pagination';
 import {SeatCountForFlightDto} from './dtos/seat-count-for-flight.dto';
 import {AuthService} from './auth.service';
+import {FlightForAddDto} from "./dtos/flight-for-add.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,31 @@ export class FlightService {
 
     return this.http.get<SeatCountForFlightDto>(url, { headers }).pipe(
       map((responseData: SeatCountForFlightDto) => responseData));
+  }
+
+  public addFlight(flight: FlightForAddDto): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.authService.getToken()}`
+    });
+
+    return this.http.post(this.url, flight, { headers }).pipe(catchError(this.handleError));
+  }
+
+  private handleError(errorRes: HttpErrorResponse): Observable<any> {
+    let errorMessage = 'An unknown error occurred';
+
+    switch (errorRes.status) {
+      case 500:
+        errorMessage = 'The server error occurred';
+        break;
+      case 400:
+        errorMessage = errorRes.error;
+        break;
+      case 401:
+        errorMessage = 'Wrong username or password';
+        break;
+    }
+    return throwError(errorMessage);
   }
 }

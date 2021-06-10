@@ -18,11 +18,15 @@ import {PlatformModule} from '@angular/cdk/platform';
 import { TopBarMobileComponent } from './components/top-bar-mobile/top-bar-mobile.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ManagementComponent } from './components/management/management.component';
+import { AccountComponent } from './components/account/account.component';
 import { EmployeeAccountComponent } from './components/management/employee-account/employee-account.component';
 import { HistoryComponent } from './components/history/history.component';
 import { HistoryRowComponent } from './components/history/history-row/history-row.component';
 import { PassengerRowComponent } from './components/history/history-row/passenger-row/passenger-row.component';
 import { AirportComponent } from './components/airport/airport.component';
+import { PaymentConfirmationComponent } from './components/management/payment-confirmation/payment-confirmation.component';
+import { FlightAddComponent } from './components/management/flight-add/flight-add.component';
+import { PlaneAddComponent } from './components/management/plane-add/plane-add.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,9 +35,13 @@ const appRoutes: Routes = [
   { path: 'buy', component: BookingComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'management', component: ManagementComponent },
+  { path: 'account', component: AccountComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'management/employee/create', component: EmployeeAccountComponent },
-  { path: 'management/airport/edit', component: AirportComponent }
+  { path: 'management/airport/edit', component: AirportComponent },
+  { path: 'management/payment/confirm', component: PaymentConfirmationComponent },
+  { path: 'management/flight/add', component: FlightAddComponent },
+  { path: 'management/airplane/add', component: PlaneAddComponent }
 ];
 
 @NgModule({
@@ -49,11 +57,15 @@ const appRoutes: Routes = [
     TopBarMobileComponent,
     PaymentComponent,
     ManagementComponent,
+    AccountComponent,
     EmployeeAccountComponent,
     HistoryComponent,
     HistoryRowComponent,
     PassengerRowComponent,
     AirportComponent,
+    PaymentConfirmationComponent,
+    FlightAddComponent,
+    PlaneAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +81,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     PlatformModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     DatePipe,

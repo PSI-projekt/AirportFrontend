@@ -12,6 +12,7 @@ import {PassengerForBookingDto} from '../../api/dtos/passenger-for-booking.dto';
 import {BookingForAddDto} from '../../api/dtos/booking-for-add.dto';
 import {BookingService} from '../../api/booking.service';
 import {PaymentDto} from '../../api/dtos/payment.dto';
+import {AuthService} from '../../api/auth.service';
 
 @Component({
   selector: 'app-booking',
@@ -27,13 +28,18 @@ export class BookingComponent implements OnInit, AfterViewInit, OnDestroy {
   public odd: number[] = [];
   public shouldDisplayIcons = true;
   public isFetching = false;
+  public userRole: number | undefined;
 
   constructor(private toastr: ToastrService, private commonService: CommonService, private changeDetector: ChangeDetectorRef,
               private flightService: FlightService, public router: Router, private formBuilder: FormBuilder,
-              private passengerService: PassengerService, private bookingService: BookingService) {
+              private passengerService: PassengerService, private bookingService: BookingService,
+              private authService: AuthService) {
     this.selectedFlight = commonService.selectedFlight;
     this.passengersForm = formBuilder.group({});
     this.fillArrays();
+    this.authService.currentUser$.subscribe(user => {
+      this.userRole = user?.role;
+    });
   }
 
   ngOnInit(): void {

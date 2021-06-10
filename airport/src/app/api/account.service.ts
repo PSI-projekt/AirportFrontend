@@ -7,48 +7,36 @@ import { UserForLoginDto } from './dtos/user-for-login-dto';
 import {User} from '../interfaces/user';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {ToastrService} from 'ngx-toastr';
+import { UserForEditDto } from './dtos/user-for-edit.dto';
 import { AuthService } from './auth.service';
-import { AirportForEditDto } from './dtos/airport-for-edit.dto';
-import { AirportForListDto } from './dtos/airport-for-list.dto';
-import { AirportCountDto } from './dtos/airport-count.dto';
 
-@Injectable({
-  providedIn: 'root'
-})
-
-export class AirportService {
+@Injectable({ providedIn: 'root' })
+export class AccountService {
 
   private readonly url: string;
 
-
   constructor(private http: HttpClient, private toastr: ToastrService, private authService: AuthService) {
-    this.url = environment.baseUrl + ApiPaths.AirportApi;
+    this.url = environment.baseUrl + ApiPaths.User;
   }
 
-  public GetNumberOfAirports(): Observable<AirportCountDto> {
-    const url = this.url + '/count';
-
-    return this.http.get<AirportCountDto>(url).pipe(
-      map((responseData: AirportCountDto) => responseData));
-  }
-
-  public GetAirports(): Observable<Array<AirportForListDto>> {
+  public edit(userForEdit: UserForEditDto): Observable<UserForEditDto> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.authService.getToken()}`
     });
 
-    return this.http.get<Array<AirportForListDto>>(this.url, { headers }).pipe(
-      map((responseData: Array<AirportForListDto>) => responseData));
+    return this.http.patch<UserForEditDto>(this.url, userForEdit, { headers })
+      .pipe(catchError(this.handleError)
+    );
   }
 
-  public edit(airportForEdit: AirportForEditDto): Observable<AirportForEditDto> {
+  public delete(userId: number): Observable<number> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.authService.getToken()}`
     });
 
-    return this.http.patch<AirportForEditDto>(this.url, airportForEdit, { headers })
+    return this.http.patch<number>(this.url + `/delete/${userId}`, userId, { headers })
       .pipe(catchError(this.handleError)
     );
   }
@@ -70,3 +58,12 @@ export class AirportService {
     return throwError(errorMessage);
   }
 }
+
+
+
+
+
+
+
+
+
