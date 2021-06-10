@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
 import {ApiPaths, environment} from '../../environments/environment';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
-import {AirplaneCountDto} from './dtos/airplane-count.dto';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import {catchError, map} from 'rxjs/operators';
 import {Observable, ReplaySubject, throwError} from 'rxjs';
-import { ApiPaths, environment } from '../../environments/environment';
 import { UserForLoginDto } from './dtos/user-for-login-dto';
 import {User} from '../interfaces/user';
 import {JwtHelperService} from '@auth0/angular-jwt';
@@ -15,7 +10,6 @@ import {ToastrService} from 'ngx-toastr';
 import { AuthService } from './auth.service';
 import { AirplaneForEditDto } from './dtos/airplane-for-edit.dto';
 import { AirplaneForListDto } from './dtos/airplane-for-list.dto';
-import { AirplaneCountDto } from './dtos/airplane-count.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -27,12 +21,6 @@ export class AirplaneService {
   
   constructor(private http: HttpClient, private toastr: ToastrService, private authService: AuthService) {
     this.url = environment.baseUrl + ApiPaths.Airplane;
-  }
-
-  public GetNumberOfAirplanes(): Observable<AirplaneCountDto> {
-    const url = this.url + '/count';
-    return this.http.get<AirplaneCountDto>(url).pipe(
-      map((responseData: AirplaneCountDto) => responseData));
   }
 
   public getAirplaneList(): Observable<Array<AirplaneForListDto>> {

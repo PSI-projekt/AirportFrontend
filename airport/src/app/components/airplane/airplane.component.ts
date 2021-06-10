@@ -6,11 +6,13 @@ import { UserService } from '../../api/user.service';
 import { UserForDetailsDto } from '../../api/dtos/user-for-details.dto';
 import { AirplaneService } from '../../api/airplane.service';
 import { AirplaneForEditDto } from '../../api/dtos/airplane-for-edit.dto';
-import { AirplaneForListDto } from '../../api/dtos/airplane-for-list.dto';
 import { Router } from '@angular/router';
 import { AuthService } from '../../api/auth.service';
 import { User } from '../../interfaces/user';
 import { Privileges } from '../../enums/privileges.enum';
+import { AirportForListDto } from '../../api/dtos/airport-for-list.dto';
+import { AirportService } from '../../api/airport.service';
+import { AirplaneForListDto } from '../../api/dtos/airplane-for-list.dto';
 
 @Component({
   selector: 'app-airplane',
@@ -20,25 +22,31 @@ import { Privileges } from '../../enums/privileges.enum';
 export class AirplaneComponent implements OnInit {
   public isFetching = false;
   public loggedUser: User | undefined;
+  public airports: Array<AirportForListDto> | undefined;
   public airplanes: Array<AirplaneForListDto> | undefined;
   public id: number | undefined;
+  public locationId: number | undefined;
   public editForm = new FormGroup({
-    name: new FormControl(''),
-    country: new FormControl(''),
-    city: new FormControl(''),
-    street: new FormControl(''),    
-    codeIATA: new FormControl(''),
+    maker: new FormControl(''),
+    model: new FormControl(''),
+    identifier: new FormControl(''),
+    locationId: new FormControl(''),    
+    airline: new FormControl(''),
+    numberOfSeats: new FormControl(''),
+    isInRepair: new FormControl(''),
   });
 
   constructor(private toastr: ToastrService, private userService: UserService,
-    private airplaneService: AirplaneService, public router: Router, private authService: AuthService) {
+    private airplaneService: AirplaneService, public router: Router, private authService: AuthService,
+    private airportService: AirportService) {
       this.authService.currentUser$.subscribe(user => {
       this.loggedUser = user;
     });
   }
 
   ngOnInit(): void {
-    this.getAirplanesList();
+    this.getAirports();
+    this.getAirplanes();
   }
 
   onSubmit(form: FormGroup): void {
@@ -59,7 +67,6 @@ export class AirplaneComponent implements OnInit {
       numberOfSeats: form.controls['numberOfSeats'].value,
       isInRepair: form.controls['isInRepair'].value           
     }
-
     this.isFetching = true;
 
     this.airplaneService.edit(airplane_).subscribe(
@@ -75,27 +82,12 @@ export class AirplaneComponent implements OnInit {
     );    
   }
 
-  private getAirplaneList(): void {
-    if (this.loggedUser === undefined || this.loggedUser.role === Privileges.applicationUser) {
-        this.router.navigate(['/'])
-      }
-
-      else {
-        this.airplaneService.getAirplaneList().subscribe((response: Array<AirplaneForListDto>) => {
-          this.airplanes = response;
-          this.setValues(this.airplanes);
-        }, error => {
-          this.toastr.error('An error occurred while fetching the airplane details.');
-        });
-      }
-  }
-
   public setAirplane(event: any): void {
     if (event.target.value > -1) {
       // @ts-ignore
       this.setValues(this.airplanes[event.target.value]);
     }
-
+  }
   public setValues(data: any): void {
     this.editForm.setValue({
       maker: data.maker,
@@ -107,5 +99,22 @@ export class AirplaneComponent implements OnInit {
       isInRepair: data.isInRepair,            
     });
     this.id = data.id;
-  }  
+    this.locationId = data.locationId;
+  }
+
+  private getAirports(): void {
+    this.airportService.GetAirports().subscribe((data: Array<AirportForListDto>) => {
+      this.airports = data;
+    }, error => {
+      this.toastr.error('An error occurred', 'Error');
+    });
+  }
+
+  private getAirplanes(): void {
+    this.airplaneService.getAirplaneList().subscribe((data: Array<AirplaneForListDto>) => {
+      this.airplanes = data;
+    }, error => {
+      this.toastr.error('An error occurred', 'Error');
+    });
+  }
 } 
