@@ -24,7 +24,9 @@ import { HistoryComponent } from './components/history/history.component';
 import { HistoryRowComponent } from './components/history/history-row/history-row.component';
 import { PassengerRowComponent } from './components/history/history-row/passenger-row/passenger-row.component';
 import { AirplaneComponent } from './components/airplane/airplane.component';
-
+import { PaymentConfirmationComponent } from './components/management/payment-confirmation/payment-confirmation.component';
+import { FlightAddComponent } from './components/management/flight-add/flight-add.component';
+import { PlaneAddComponent } from './components/management/plane-add/plane-add.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,6 +39,9 @@ const appRoutes: Routes = [
   { path: 'history', component: HistoryComponent },
   { path: 'management/employee/create', component: EmployeeAccountComponent },  
   { path: 'management/airplane/edit', component: AirplaneComponent }
+  { path: 'management/payment/confirm', component: PaymentConfirmationComponent },
+  { path: 'management/flight/add', component: FlightAddComponent },
+  { path: 'management/airplane/add', component: PlaneAddComponent }
 ];
 
 @NgModule({
@@ -58,6 +63,9 @@ const appRoutes: Routes = [
     HistoryRowComponent,
     PassengerRowComponent,
     AirplaneComponent,
+    PaymentConfirmationComponent,
+    FlightAddComponent,
+    PlaneAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +81,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     PlatformModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     DatePipe,

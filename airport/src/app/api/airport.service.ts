@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ApiPaths, environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AirportCountDto } from './dtos/airport-count.dto';
-import { AirportForListDto } from './dtos/airport-for-list.dto';
-import { AuthService } from "./auth.service";
+import {ApiPaths, environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {AirportCountDto} from './dtos/airport-count.dto';
+import {AirportForListDto} from './dtos/airport-for-list.dto';
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'

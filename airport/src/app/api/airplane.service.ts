@@ -10,27 +10,29 @@ import {ToastrService} from 'ngx-toastr';
 import { AuthService } from './auth.service';
 import { AirplaneForEditDto } from './dtos/airplane-for-edit.dto';
 import { AirplaneForListDto } from './dtos/airplane-for-list.dto';
+import {AirplaneForAddDto} from "./dtos/airplane-for-add.dto";
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AirplaneService {
-
   private readonly url: string;
-  
-  constructor(private http: HttpClient, private toastr: ToastrService, private authService: AuthService) {
+
+  constructor(private http: HttpClient, private authService: AuthService) {
     this.url = environment.baseUrl + ApiPaths.Airplane;
   }
 
-  public getAirplaneList(): Observable<Array<AirplaneForListDto>> {
+  public GetAirplanes(): Observable<Array<AirplaneForListDto>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.authService.getToken()}`
     });
 
     return this.http.get<Array<AirplaneForListDto>>(this.url, { headers }).pipe(
-        map((responseData: Array<AirplaneForListDto>) => responseData));
+
+    map((responseData: Array<AirplaneForListDto>) => responseData));
   }
 
   public edit(airplaneForEdit: AirplaneForEditDto): Observable<AirplaneForEditDto> {
@@ -38,10 +40,19 @@ export class AirplaneService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.authService.getToken()}`
     });
-
+    
     return this.http.patch<AirplaneForEditDto>(this.url, airplaneForEdit, { headers })
       .pipe(catchError(this.handleError)
     );
+  }
+
+  public CreateAirplane(airplane: AirplaneForAddDto): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.authService.getToken()}`
+    });
+
+    return this.http.post(this.url, airplane, {headers}).pipe(catchError(this.handleError));
   }
 
   private handleError(errorRes: HttpErrorResponse): Observable<any> {
