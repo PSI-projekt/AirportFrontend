@@ -15,14 +15,15 @@
               <div class="card mt-4 rounded-0">
                 <div class="card-body">
                   <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">local_airport</span>Edit Airplane</h5>
-                  <div class="col d-flex justify-content-end">
-                    <select class="form-select rounded-0 mb-2" id="airplanesSelect" aria-label="Airplane select" *ngIf="id !== 0" (change)="setAirplane($event)">
-                      <option selected>Select airport</option>
-                      <option value="{{i}}" *ngFor="let row of airplanes, index as i">{{row.maker}} {{row.model}} {{row.identifier}} {{row.airline}}</option>
-                    </select>
+                  <div class="col d-flex justify-content-start">
+                    Select airplane and edit details.
                   </div>
                   <div class="row">
                     <div class="col mt-4">
+                      <select class="form-select rounded-0 mb-2" id="airplanesSelect" aria-label="Airplane select" *ngIf="id !== 0" (change)="setAirplane($event)">
+                        <option selected>Select airport</option>
+                        <option value="{{i}}" *ngFor="let row of airplanes, index as i">{{row.maker}} {{row.model}} {{row.identifier}} {{row.airline}}</option>
+                      </select>
                       <form [formGroup]="editForm" class="text-center" (ngSubmit)="onSubmit(editForm)">
                         <div class="col mt-4">
                           <div class="row mb-3">

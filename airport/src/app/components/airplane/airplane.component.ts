@@ -111,7 +111,7 @@ export class AirplaneComponent implements OnInit {
   }
 
   private getAirplanes(): void {
-    this.airplaneService.getAirplaneList().subscribe((data: Array<AirplaneForListDto>) => {
+    this.airplaneService.GetAirplanes().subscribe((data: Array<AirplaneForListDto>) => {
       this.airplanes = data;
     }, error => {
       this.toastr.error('An error occurred', 'Error');

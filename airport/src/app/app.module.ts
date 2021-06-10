@@ -38,7 +38,7 @@ const appRoutes: Routes = [
   { path: 'account', component: AccountComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'management/employee/create', component: EmployeeAccountComponent },  
-  { path: 'management/airplane/edit', component: AirplaneComponent }
+  { path: 'management/airplane/edit', component: AirplaneComponent },
   { path: 'management/payment/confirm', component: PaymentConfirmationComponent },
   { path: 'management/flight/add', component: FlightAddComponent },
   { path: 'management/airplane/add', component: PlaneAddComponent }
