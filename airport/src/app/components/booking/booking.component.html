@@ -10,8 +10,10 @@
     <div class="row">
       <div class="col mb-5">
         <div class="row">
-          <h1 class="mt-5">Complete Your reservation</h1>
-          <p class="mt-3">Enter information of all passengers for Your flight. Additional information will be displayed in the next step.</p>
+          <h1 class="mt-5" *ngIf="userRole === 0">Complete Your reservation</h1>
+          <h1 class="mt-5" *ngIf="userRole !== 0">Complete reservation for client</h1>
+          <p class="mt-3" *ngIf="userRole === 0">Enter information of all passengers for Your flight. Additional information will be displayed in the next step.</p>
+          <p class="mt-3" *ngIf="userRole !== 0">Enter information of all passengers for client's flight. Additional information will be displayed in the next step.</p>
         </div>
         <div class="row">
           <div class="col-lg">

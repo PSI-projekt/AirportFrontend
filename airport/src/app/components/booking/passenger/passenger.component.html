@@ -5,8 +5,8 @@
         <h5 class="card-title">{{numberString}} passenger</h5>
       </div>
       <div class="col d-flex justify-content-end">
-        <button class="btn-base btn-black" type="button" (click)="setValues(user)" *ngIf="id === 0">Load Your details</button>
-        <select class="form-select rounded-0 mb-2" id="passengerSelect" aria-label="Passenger select" *ngIf="id !== 0" (change)="setPassenger($event)">
+        <button class="btn-base btn-black" type="button" (click)="setValues(user)" *ngIf="id === 0 && userRole === 0">Load Your details</button>
+        <select class="form-select rounded-0 mb-2" id="passengerSelect" aria-label="Passenger select" *ngIf="id !== 0 || userRole !== 0" (change)="setPassenger($event)">
           <option selected>Select from history</option>
           <option>Clear data</option>
           <option value="{{i}}" *ngFor="let row of passengers, index as i">{{row.firstName}} {{row.lastName}}</option>
