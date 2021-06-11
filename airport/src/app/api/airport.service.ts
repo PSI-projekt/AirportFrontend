@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 import { AirportForEditDto } from './dtos/airport-for-edit.dto';
 import { AirportForListDto } from './dtos/airport-for-list.dto';
 import { AirportCountDto } from './dtos/airport-count.dto';
+import { AirportForAddDto } from './dtos/airport-for-add.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,15 @@ export class AirportService {
 
     return this.http.get<Array<AirportForListDto>>(this.url, { headers }).pipe(
       map((responseData: Array<AirportForListDto>) => responseData));
+  }
+
+  public addAirport(airport: AirportForAddDto): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.authService.getToken()}`
+    });
+
+    return this.http.post(this.url, airport, { headers }).pipe(catchError(this.handleError));
   }
 
   public edit(airportForEdit: AirportForEditDto): Observable<AirportForEditDto> {
