@@ -16,7 +16,7 @@
               <div class="card mt-2 rounded-0">
                 <div class="card-body">
                   <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">local_airport</span>Destination</h5>
-                  <form #airportForm="ngForm" (ngSubmit)="onSubmit(airportForm)">
+                  <form [formGroup]="airportForm" (ngSubmit)="onSubmit(airportForm)">
                     <div class="col mt-4">
                       <div class="row mb-3">
                         <div class="col">

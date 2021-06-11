@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {AuthService} from '../../../api/auth.service';
 import {ToastrService} from 'ngx-toastr';
 import {User} from '../../../interfaces/user';
-import {FormGroup, NgForm} from "@angular/forms";
+import {FormControl, FormGroup, NgForm} from "@angular/forms";
 import {AirportForAddDto} from "../../../api/dtos/airport-for-add.dto";
 import {AirportService} from "../../../api/airport.service";
 import {Privileges} from "../../../enums/privileges.enum";
@@ -16,6 +16,13 @@ import {Privileges} from "../../../enums/privileges.enum";
 export class AirportAddComponent implements OnInit {
   public user: User | undefined;
   public isFetching = false;
+  public airportForm = new FormGroup({
+    name: new FormControl(''),
+    country: new FormControl(''),
+    city: new FormControl(''),
+    street: new FormControl(''),
+    codeIATA: new FormControl(''),
+  });
 
   constructor(public router: Router, private authService: AuthService, private toastr: ToastrService,
               private airportService: AirportService) {
@@ -34,7 +41,7 @@ export class AirportAddComponent implements OnInit {
     }
   }
 
-  public onSubmit(airportForm: NgForm): void {
+  public onSubmit(airportForm: FormGroup): void {
     const airport: AirportForAddDto = {
       name: airportForm.value.name,
       country: airportForm.value.country,
