@@ -23,6 +23,7 @@ import { EmployeeAccountComponent } from './components/management/employee-accou
 import { HistoryComponent } from './components/history/history.component';
 import { HistoryRowComponent } from './components/history/history-row/history-row.component';
 import { PassengerRowComponent } from './components/history/history-row/passenger-row/passenger-row.component';
+import { AirplaneComponent } from './components/airplane/airplane.component';
 import { AirportComponent } from './components/airport/airport.component';
 import { PaymentConfirmationComponent } from './components/management/payment-confirmation/payment-confirmation.component';
 import { FlightAddComponent } from './components/management/flight-add/flight-add.component';
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
   { path: 'management', component: ManagementComponent },
   { path: 'account', component: AccountComponent },
   { path: 'history', component: HistoryComponent },
-  { path: 'management/employee/create', component: EmployeeAccountComponent },
+  { path: 'management/employee/create', component: EmployeeAccountComponent },  
+  { path: 'management/airplane/edit', component: AirplaneComponent },
   { path: 'management/airport/edit', component: AirportComponent },
   { path: 'management/payment/confirm', component: PaymentConfirmationComponent },
   { path: 'management/flight/add', component: FlightAddComponent },
@@ -64,6 +66,7 @@ const appRoutes: Routes = [
     HistoryComponent,
     HistoryRowComponent,
     PassengerRowComponent,
+    AirplaneComponent,
     AirportComponent,
     PaymentConfirmationComponent,
     FlightAddComponent,
