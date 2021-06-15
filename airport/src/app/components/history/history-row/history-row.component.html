@@ -84,7 +84,7 @@
             <p class="align-middle ms-2 pt-3">Number of passengers for this flight: {{booking?.passengers?.length}}</p>
           </div>
           <div class="col d-flex justify-content-end">
-            <button class="btn-base btn-green h-max" [disabled]="booking?.isCancelled">Edit reservation</button>
+            <button class="btn-base btn-green h-max" (click)="selectBooking()" [disabled]="booking?.isCancelled">Edit reservation</button>
           </div>
         </div>
         <div class="collapse" id="passengers{{booking?.id}}">

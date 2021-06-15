@@ -1,7 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BookingForListDto} from '../../../api/dtos/booking-for-list.dto';
-import {DatePipe} from '@angular/common';
-import {BookingService} from '../../../api/booking.service';
+import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
+import { BookingService } from '../../../api/booking.service';
+import { CommonService } from '../../../services/common.service';
+import { User } from '../../../interfaces/user';
+import { AuthService } from '../../../api/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { BookingForEditDto } from '../../../api/dtos/booking-for-edit.dto';
 
 @Component({
   selector: 'app-history-row',
@@ -10,8 +16,15 @@ import {BookingService} from '../../../api/booking.service';
 })
 export class HistoryRowComponent implements OnInit {
   @Input() public booking: BookingForListDto | undefined;
+  user: User | undefined;
 
-  constructor(private datePipe: DatePipe, private bookingService: BookingService) { }
+  constructor(private datePipe: DatePipe, private bookingService: BookingService,
+              private router: Router, private commonService: CommonService,
+              private authService: AuthService, private toastr: ToastrService) {
+    this.authService.currentUser$.subscribe(user => {
+      this.user = user;
+    });
+  }
 
   ngOnInit(): void {
     const dateOfDepartureUsString = new Date(this.booking?.flightDetails.dateOfDeparture as string).toLocaleString('en-US');
@@ -53,5 +66,24 @@ export class HistoryRowComponent implements OnInit {
         link.remove();
       }, 100);
     });
+  }
+
+  selectBooking(): void {
+    if (this.user !== undefined && this.user.role === 0) {
+      this.commonService.bookingDetails = this.booking;
+      
+      const selectedBooking: BookingForEditDto = {
+        // @ts-ignore
+        id: this.booking?.id,
+        // @ts-ignore
+        passengers: this.booking?.passengers
+      }
+
+      this.commonService.selectedBooking = selectedBooking;
+      this.router.navigate(['/booking/edit']);
+    }
+    else {
+      this.toastr.error('You cannot do this');
+    }
   }
 }
