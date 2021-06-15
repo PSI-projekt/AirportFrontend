@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BookingForEditDto } from '../api/dtos/booking-for-edit.dto';
+import { BookingForListDto } from '../api/dtos/booking-for-list.dto';
 import {FlightDto} from '../api/dtos/flight.dto';
 import {PassengerForListDto} from '../api/dtos/passenger-for-list.dto';
 import {PaymentDto} from '../api/dtos/payment.dto';
@@ -12,6 +14,8 @@ export class CommonService {
   public selectedFlight: FlightDto | undefined;
   public passengers: Array<PassengerForListDto> | undefined;
   public paymentDetails: PaymentDto | undefined;
+  public bookingDetails: BookingForListDto | undefined;
+  public selectedBooking: BookingForEditDto | undefined;
 
   constructor() {
     this.lastPage = 1;
