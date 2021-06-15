@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {ApiPaths, environment} from '../../environments/environment';
 import {BookingForAddDto} from './dtos/booking-for-add.dto';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {PaymentDto} from './dtos/payment.dto';
-import {map} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {BookingForListDto} from './dtos/booking-for-list.dto';
 import {PaginatedResult} from './dtos/pagination';
+import { BookingForEditDto } from './dtos/booking-for-edit.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -63,5 +64,35 @@ export class BookingService {
     const url = this.url + '/pdf/' + bookingId;
 
     return this.http.get(url, {responseType: 'blob', headers});
+  }
+
+  public edit(bookingForEdit: BookingForEditDto): Observable<BookingForEditDto> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.authService.getToken()}`
+    });
+
+    const url = this.url + '/edit';
+
+    return this.http.patch<BookingForEditDto>(url, bookingForEdit, { headers })
+      .pipe(catchError(this.handleError)
+      );
+  }
+
+  private handleError(errorRes: HttpErrorResponse): Observable<any> {
+    let errorMessage = 'An unknown error occurred';
+
+    switch (errorRes.status) {
+      case 500:
+        errorMessage = 'The server error occurred';
+        break;
+      case 400:
+        errorMessage = errorRes.error;
+        break;
+      case 401:
+        errorMessage = 'You are not allowed to do this';
+        break;
+    }
+    return throwError(errorMessage);
   }
 }
