@@ -26,6 +26,7 @@ import { PassengerRowComponent } from './components/history/history-row/passenge
 import { PaymentConfirmationComponent } from './components/management/payment-confirmation/payment-confirmation.component';
 import { FlightAddComponent } from './components/management/flight-add/flight-add.component';
 import { BookingEditComponent } from './components/booking/booking-edit/booking-edit.component';
+import { PassengerEditComponent } from './components/booking/booking-edit/passenger-edit/passenger-edit.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
   { path: 'history', component: HistoryComponent },
   { path: 'management/employee/create', component: EmployeeAccountComponent },
   { path: 'management/payment/confirm', component: PaymentConfirmationComponent },
-  { path: 'management/flight/add', component: FlightAddComponent }
+  { path: 'management/flight/add', component: FlightAddComponent },
+  { path: 'booking/edit', component: BookingEditComponent }
 ];
 
 @NgModule({
@@ -62,6 +64,7 @@ const appRoutes: Routes = [
     PaymentConfirmationComponent,
     FlightAddComponent,
     BookingEditComponent,
+    PassengerEditComponent,
   ],
   imports: [
     BrowserModule,
