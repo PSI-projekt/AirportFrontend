@@ -6,13 +6,13 @@ import {SeatCountForFlightDto} from '../../../api/dtos/seat-count-for-flight.dto
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {PassengerService} from '../../api/passenger.service';
-import {PassengerForListDto} from '../../api/dtos/passenger-for-list.dto';
-import {PassengerForBookingDto} from '../../api/dtos/passenger-for-booking.dto';
-import {BookingForAddDto} from '../../api/dtos/booking-for-add.dto';
-import {BookingService} from '../../api/booking.service';
-import {PaymentDto} from '../../api/dtos/payment.dto';
-import {AuthService} from '../../api/auth.service';
+import {PassengerService} from '../../../api/passenger.service';
+import { PassengerForListDto } from '../../../api/dtos/passenger-for-list.dto';
+import { PassengerForBookingDto } from '../../../api/dtos/passenger-for-booking.dto';
+import { BookingForAddDto } from '../../../api/dtos/booking-for-add.dto';
+import { BookingService } from '../../../api/booking.service';
+import { PaymentDto } from '../../../api/dtos/payment.dto';
+import { AuthService } from '../../../api/auth.service';
 
 @Component({
   selector: 'app-booking-add',
