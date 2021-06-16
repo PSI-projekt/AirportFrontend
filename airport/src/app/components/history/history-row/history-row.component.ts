@@ -69,21 +69,23 @@ export class HistoryRowComponent implements OnInit {
   }
 
   selectBooking(): void {
-    if (this.user !== undefined && this.user.role === 0) {
-      this.commonService.bookingDetails = this.booking;
-      
-      const selectedBooking: BookingForEditDto = {
-        // @ts-ignore
-        id: this.booking?.id,
-        // @ts-ignore
-        passengers: this.booking?.passengers
-      }
+    if (this.user !== undefined) {
+      if (this.user.role === 1 || this.user.role === 2 || this.user.id === this.booking?.userId) {
+        this.commonService.bookingDetails = this.booking;
 
-      this.commonService.selectedBooking = selectedBooking;
-      this.router.navigate(['/booking/edit']);
+        const selectedBooking: BookingForEditDto = {
+          // @ts-ignore
+          id: this.booking?.id,
+          // @ts-ignore
+          passengers: this.booking?.passengers
+        }
+
+        this.commonService.selectedBooking = selectedBooking;
+        this.router.navigate(['/booking/edit']);
+      }
     }
     else {
-      this.toastr.error('You cannot do this');
+      this.toastr.error('You are not allowed to do this');
     }
   }
 }
