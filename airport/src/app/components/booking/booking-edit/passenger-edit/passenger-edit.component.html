@@ -1,0 +1,125 @@
+<div class="card rounded-0 mt-3 height-custom" >
+  <div class="card-body m-2">
+    <div class="row">
+      <div class="col d-flex align-items-center">
+        <h5 class="card-title">{{numberString}} passenger</h5>
+      </div>
+    </div>
+    <form [formGroup]="parentForm">
+      <div class="col mt-4">
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-floating">
+              <input type="text"
+                     class="form-control rounded-0"
+                     id="firstName{{id}}"
+                     placeholder="First Name"
+                     formControlName="firstName{{id}}"
+                     name="firstName{{id}}"
+                     required
+              >
+              <label for="firstName{{id}}">First Name</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating">
+              <input type="text"
+                     class="form-control rounded-0"
+                     id="lastName{{id}}"
+                     placeholder="Last Name"
+                     formControlName="lastName{{id}}"
+                     name="lastName{{id}}"
+                     required
+              >
+              <label for="lastName{{id}}">Last Name</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-floating">
+              <input type="text"
+                     class="form-control rounded-0"
+                     id="idNumber{{id}}"
+                     placeholder="PESEL"
+                     formControlName="idNumber{{id}}"
+                     name="idNumber{{id}}"
+                     required
+              >
+              <label for="idNumber{{id}}">PESEL or Passport no.</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating">
+              <input type="text"
+                     class="form-control rounded-0"
+                     id="country{{id}}"
+                     placeholder="Country"
+                     formControlName="country{{id}}"
+                     name="country{{id}}"
+                     required
+              >
+              <label for="country{{id}}">Country</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-floating">
+              <input type="text"
+                     class="form-control rounded-0"
+                     id="street{{id}}"
+                     placeholder="Street"
+                     formControlName="street{{id}}"
+                     name="street{{id}}"
+                     required
+              >
+              <label for="street{{id}}">Street</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating">
+              <input type="text"
+                     class="form-control rounded-0"
+                     id="number{{id}}"
+                     placeholder="Number"
+                     formControlName="number{{id}}"
+                     name="number{{id}}"
+                     required
+              >
+              <label for="number{{id}}">Number</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-floating">
+              <input type="text"
+                     class="form-control rounded-0"
+                     id="city{{id}}"
+                     placeholder="City"
+                     formControlName="city{{id}}"
+                     name="city{{id}}"
+                     required
+              >
+              <label for="city{{id}}">City</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating">
+              <input type="number"
+                     class="form-control rounded-0"
+                     id="postalCode{{id}}"
+                     placeholder="Postal Code"
+                     formControlName="postalCode{{id}}"
+                     name="postalCode{{id}}"
+                     required
+              >
+              <label for="postalCode{{id}}">Postal Code</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {CommonService} from '../../services/common.service';
-import {FlightDto} from '../../api/dtos/flight.dto';
-import {FlightService} from '../../api/flight.service';
-import {SeatCountForFlightDto} from '../../api/dtos/seat-count-for-flight.dto';
+import {CommonService} from '../../../services/common.service';
+import {FlightDto} from '../../../api/dtos/flight.dto';
+import {FlightService} from '../../../api/flight.service';
+import {SeatCountForFlightDto} from '../../../api/dtos/seat-count-for-flight.dto';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
@@ -15,11 +15,11 @@ import {PaymentDto} from '../../api/dtos/payment.dto';
 import {AuthService} from '../../api/auth.service';
 
 @Component({
-  selector: 'app-booking',
-  templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css']
+  selector: 'app-booking-add',
+  templateUrl: './booking-add.component.html',
+  styleUrls: ['./booking-add.component.css']
 })
-export class BookingComponent implements OnInit, AfterViewInit, OnDestroy {
+export class BookingAddComponent implements OnInit, AfterViewInit, OnDestroy {
   public selectedFlight: FlightDto | undefined;
   public seatCountForFlightDto: SeatCountForFlightDto | undefined;
   public numberOfPassengers = 1;

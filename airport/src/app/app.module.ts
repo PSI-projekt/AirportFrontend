@@ -12,7 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DatePipe} from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { BookingComponent } from './components/booking/booking.component';
+import { BookingAddComponent } from './components/booking/booking-add/booking-add.component';
 import { PassengerComponent } from './components/booking/passenger/passenger.component';
 import {PlatformModule} from '@angular/cdk/platform';
 import { TopBarMobileComponent } from './components/top-bar-mobile/top-bar-mobile.component';
@@ -27,6 +27,8 @@ import { AirplaneComponent } from './components/airplane/airplane.component';
 import { AirportComponent } from './components/airport/airport.component';
 import { PaymentConfirmationComponent } from './components/management/payment-confirmation/payment-confirmation.component';
 import { FlightAddComponent } from './components/management/flight-add/flight-add.component';
+import { BookingEditComponent } from './components/booking/booking-edit/booking-edit.component';
+import { PassengerEditComponent } from './components/booking/booking-edit/passenger-edit/passenger-edit.component';
 import { PlaneAddComponent } from './components/management/plane-add/plane-add.component';
 import { AirportAddComponent } from './components/management/airport-add/airport-add.component';
 
@@ -34,7 +36,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'buy', component: BookingComponent },
+  { path: 'buy', component: BookingAddComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'management', component: ManagementComponent },
   { path: 'account', component: AccountComponent },
@@ -44,6 +46,7 @@ const appRoutes: Routes = [
   { path: 'management/airport/edit', component: AirportComponent },
   { path: 'management/payment/confirm', component: PaymentConfirmationComponent },
   { path: 'management/flight/add', component: FlightAddComponent },
+  { path: 'booking/edit', component: BookingEditComponent },
   { path: 'management/airplane/add', component: PlaneAddComponent },
   { path: 'management/airport/add', component: AirportAddComponent }
 ];
@@ -56,7 +59,7 @@ const appRoutes: Routes = [
     FlightRowComponent,
     LoginComponent,
     RegisterComponent,
-    BookingComponent,
+    BookingAddComponent,
     PassengerComponent,
     TopBarMobileComponent,
     PaymentComponent,
@@ -70,6 +73,8 @@ const appRoutes: Routes = [
     AirportComponent,
     PaymentConfirmationComponent,
     FlightAddComponent,
+    BookingEditComponent,
+    PassengerEditComponent,
     PlaneAddComponent,
     AirportAddComponent,
   ],
