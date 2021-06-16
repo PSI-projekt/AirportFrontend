@@ -1,4 +1,4 @@
-export interface AirplaneForListDto {
+export interface AirplaneForEditDto {
     id: number;
     maker: string;
     model: string;

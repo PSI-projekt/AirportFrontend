@@ -1,0 +1,87 @@
+<div class="container-custom">
+  <div class="overlay" *ngIf="isFetching">
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+  <div class="container-xl bg-white ps-5 pe-5">
+    <div class="row">
+      <div class="col mb-5">
+        <h1 class="mt-5">Add airplane</h1>
+        <p class="mt-3">Add a new airplane to the system.</p>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card mt-2 rounded-0">
+              <div class="card-body">
+                <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">flight</span>Airplane</h5>
+                <form #airplaneForm="ngForm" (ngSubmit)="onSubmit(airplaneForm)">
+                  <div class="col">
+                    <div class="row mt-4">
+                      <div class="col-6">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="maker"
+                                 placeholder="Maker"
+                                 ngModel name="maker"
+                                 required
+                          >
+                          <label for="maker">Maker</label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="model"
+                                 placeholder="Model"
+                                 ngModel name="model"
+                                 required
+                          >
+                          <label for="model">Model</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-6">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="identifier"
+                                 placeholder="Identifier"
+                                 ngModel name="identifier"
+                                 required
+                          >
+                          <label for="maker">Identifier</label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-floating">
+                          <input type="text"
+                                 class="form-control rounded-0"
+                                 id="airline"
+                                 placeholder="Airline"
+                                 ngModel name="airline"
+                                 required
+                          >
+                          <label for="airline">Airline</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-4">
+                    <div class="col d-flex justify-content-end">
+                      <button class="btn-base btn-black" type="submit" [disabled]="!airplaneForm.valid">Create</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

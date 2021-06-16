@@ -1,0 +1,116 @@
+<div class="container-custom">
+  <div class="overlay" *ngIf="isFetching">
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-xl bg-white ps-5 pe-5">
+    <div class="row">
+      <div class="col mb-5">
+        <h1 class="mt-5">Airport details</h1>
+        <div class="row">
+          <div class="col">
+            <div class="card mt-4 rounded-0">
+              <div class="card-body">
+                <h5 class="card-title col d-flex align-items-center"><span class="material-icons me-2">local_airport</span>Edit Airport</h5>
+                <div class="col d-flex justify-content-start">
+                  Select airport and edit details
+                </div>
+                <div class="row">
+                  <div class="col p-4">
+                    <select class="form-select rounded-0 mb-2" id="airportSelect" aria-label="Airport select" *ngIf="id !== 0" (change)="setAirport($event)">
+                      <option selected>Select airport</option>
+                      <option value="{{i}}" *ngFor="let row of airports, index as i">{{row.name}}</option>
+                    </select>
+                    <form [formGroup]="editForm" class="text-center" (ngSubmit)="onSubmit(editForm)">
+                      <div class="col mt-4">
+                        <div class="row mb-3">
+                          <div class="col">
+                            <div class="form-floating">
+                              <input type="text"
+                                     class="form-control rounded-0"
+                                     id="name"
+                                     placeholder="Airport name"
+                                     formControlName="name"
+                                     name="name"
+                                     required>
+                              <label for="name">Airport name</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-floating">
+                              <input type="text"
+                                     class="form-control rounded-0"
+                                     id="country"
+                                     placeholder="Country"
+                                     formControlName="country"
+                                     name="country"
+                                     required>
+                              <label for="country">Country</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col">
+                            <div class="form-floating">
+                              <input type="text"
+                                     class="form-control rounded-0"
+                                     id="city"
+                                     placeholder="City"
+                                     formControlName="city"
+                                     name="city"
+                                     required>
+                              <label for="city">City</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-floating">
+                              <input type="text"
+                                     class="form-control rounded-0"
+                                     id="street"
+                                     placeholder="Street"
+                                     formControlName="street"
+                                     name="street"
+                                     required>
+                              <label for="street">Street</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col">
+                            <div class="form-floating">
+                              <input type="text"
+                                     class="form-control rounded-0"
+                                     id="codeIATA"
+                                     placeholder="CodeIATA"
+                                     formControlName="codeIATA"
+                                     name="codeIATA"
+                                     required>
+                              <label for="codeIATA">Code IATA</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col p-4">
+                  </div>
+                  <div class="row">
+                    <div class="col p-4">
+                      <button class="btn-base btn-black w-50" (click)="onSubmit(editForm)" [disabled]="editForm.invalid">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

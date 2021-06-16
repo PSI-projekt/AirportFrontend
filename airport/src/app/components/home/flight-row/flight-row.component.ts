@@ -38,11 +38,11 @@ export class FlightRowComponent implements OnInit {
   }
 
   selectFlight(): void {
-    if (this.user !== undefined && this.user.role === 0) {
+    if (this.user !== undefined) {
       this.commonService.selectedFlight = this.flight;
       this.router.navigate(['/buy']);
     }
-    else if (this.user === undefined) {
+    else {
       this.toastr.info('Please Sign In before making a reservation.');
     }
   }
